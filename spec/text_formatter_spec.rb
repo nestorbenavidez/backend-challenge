@@ -13,5 +13,25 @@ RSpec.describe TextFormatter do
 
       expect(result.strip).to eq(expected_result.strip)
     end
+
+    it 'breaks the text into lines with a limit bigger than entire text' do
+      text = "In 1991, while studying"
+
+      expected_result = "In 1991, while studying"
+
+      result = TextFormatter.format_text(text, 80)
+
+      expect(result.strip).to eq(expected_result.strip)
+    end
+
+    it 'breaks the text into lines with a smallest limit possible' do
+      text = "In 1991, while studying"
+
+      expected_result = "In 1991, while studying"
+      limit = TextFormatter.find_biggest_word(text).length
+      result = TextFormatter.format_text(text, limit)
+
+      expect(result.strip).to eq(expected_result.strip)
+    end
   end
 end

@@ -17,6 +17,18 @@ class TextFormatter
     lines << current_line.strip
     lines.join("\n")
   end
+
+  def self.find_biggest_word(string)
+    words = string.split(' ')
+    biggest_word = ''
+
+    words.each do |word|
+      if word.length > biggest_word.length
+        biggest_word = word
+      end
+    end
+    biggest_word
+  end
 end
 
 # Example usage
